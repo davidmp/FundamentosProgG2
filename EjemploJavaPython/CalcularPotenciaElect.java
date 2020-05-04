@@ -3,7 +3,7 @@ Es posible que el codigo generado no sea completamente correcto. Si encuentra
 errores por favor reportelos en el foro (http://pseint.sourceforge.net). */
 
 // En java, el nombre de un archivo fuente debe coincidir con el nombre de la clase que contiene,
-// por lo que este archivo debería llamarse "CALCULARPOTENCIAELEC.java."
+// por lo que este archivo debera llamarse "CALCULARPOTENCIAELEC.java."
 
 import java.io.*;
 import java.math.*;
