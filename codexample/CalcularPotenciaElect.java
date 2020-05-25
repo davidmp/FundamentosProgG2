@@ -4,7 +4,7 @@ errores por favor reportelos en el foro (http://pseint.sourceforge.net). */
 
 // En java, el nombre de un archivo fuente debe coincidir con el nombre de la clase que contiene,
 // por lo que este archivo debera llamarse "CALCULARPOTENCIAELEC.java."
-package ejemplojavapython;
+package codexample;
 import java.io.*;
 public class CalcularPotenciaElect {
 	// Calcular Potencia electrica 

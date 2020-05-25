@@ -1,4 +1,4 @@
-package ejemplojavapython;
+package codexample;
 import java.util.Scanner;
 public class RepasoExamen2{
 
