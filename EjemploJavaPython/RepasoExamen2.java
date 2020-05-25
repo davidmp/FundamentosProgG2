@@ -1,5 +1,6 @@
+package ejemplojavapython;
 import java.util.Scanner;
-public class RepasoExamen{
+public class RepasoExamen2{
 
    static Scanner teclado=new Scanner(System.in);
 

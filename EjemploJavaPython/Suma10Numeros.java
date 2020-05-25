@@ -1,3 +1,4 @@
+package ejemplojavapython;
 import java.util.Scanner;
 
 class Suma10Numeros{
