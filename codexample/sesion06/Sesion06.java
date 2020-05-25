@@ -3,11 +3,9 @@ package codexample.sesion06;
 public class Sesion06{
     
     public static void main(String[] args) {
-        byte pppp=30, repp;
+        byte pppp=30;
 
-   
-
-        System.out.println("Resultado:"+pr);        
+        System.out.println("Resultado:"+pppp);        
         //Numericos
         short pa=32, pb=2;
         int pr=0;
