@@ -4,9 +4,31 @@
 <title>Ejemplo JavaScript FP</title>
     <script>
 
+        function calcularCostoHamburgesa(){
+             precioHamburgesa=0;
+             preSumaPago=0;
+             pagoTarjeta="NO";
+             for(tipoHam=1;tipoHam<=3;tipoHam++){
+                switch (tipoHam) {
+                case 1:nHamburgesas=prompt('Ingrese la Cantidad de Hamburguesas en Simple:'); precioHamburgesa=20; break;  
+                case 2:nHamburgesas=prompt('Ingrese la Cantidad de Hamburguesas en Doble:'); precioHamburgesa=25; break;  
+                case 3:nHamburgesas=prompt('Ingrese la Cantidad de Hamburguesas en Triple:'); precioHamburgesa=28; break;        
+                default: System.out.println("El tipo de Hamburgesas no existe");
+                    break;
+                }               
+                preSumaPago+=precioHamburgesa*nHamburgesas;      
+            }             
+            pagoTarjeta=prompt('Desea Pagar con Tarjeta?');
+            if(pagoTarjeta=="SI"){
+                preSumaPago=preSumaPago+(preSumaPago*0.05);
+            }
+            console.log("El Costo Total a pagar por las Hamburguesas es:"+preSumaPago);
+        }
+
+        calcularCostoHamburgesa();
+
+        
     </script>
-
-
 </head>
 <body>
 
