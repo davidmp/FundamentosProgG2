@@ -46,13 +46,56 @@ public class EjerciciosCiclicos{
     }
     System.out.println("La funcion exponencial del numero "+numeroX+" es:"+resultadoFE);
   }
+  //4.2
+  public static void calcularCostoHamburgesa(){
+    int nHamburgesas;
+    double precioHamburgesa=0;
+    double preSumaPago=0;
+    String pagoTarjeta="NO";
+    for(int tipoHam=1;tipoHam<=3;tipoHam++){
+        switch (tipoHam) {
+          case 1:System.out.println("Ingrese la Cantidad de Hamburguesas en Simple:"); precioHamburgesa=20; break;  
+          case 2:System.out.println("Ingrese la Cantidad de Hamburguesas en Doble:"); precioHamburgesa=25; break;  
+          case 3:System.out.println("Ingrese la Cantidad de Hamburguesas en Triple:"); precioHamburgesa=28; break;        
+          default: System.out.println("El tipo de Hamburgesas no existe");
+            break;
+        }
+        nHamburgesas=teclado.nextInt();
+        preSumaPago+=precioHamburgesa*nHamburgesas;      
+    }
+    System.out.println("Desea Pagar con Tarjeta?");
+    pagoTarjeta=teclado.next();
+    if(pagoTarjeta.toUpperCase().equals("SI")){
+      preSumaPago=preSumaPago+(preSumaPago*0.05);
+    }
+    System.out.println("El Costo Total a pagar por las Hamburguesas es:"+preSumaPago);
+
+  }
+
 
 
 
   public static void main(String[] ars){
-    System.out.println("Holas");
-    //calcularFactorialNum();
-    calcularFuncionExponencial();
+
+    char opcion='S'; //S=SI, N=NO
+    String numAlgoritm="01";
+
+    do{
+        System.out.println("Ingrese el numero de Algoritmo que desea probar: \n 01=Tipo Vacuna\n02=Saludos");
+        numAlgoritm=teclado.next();
+
+        switch(numAlgoritm){
+            case "01": calcularFactorialNum(); break;
+            case "02": calcularFuncionExponencial(); break;
+            case "03": calcularCostoHamburgesa(); break;
+            default: System.out.println("La opcion No existe!!");
+        }
+
+        System.out.println("Desea Probar mas Algoritmos? S=SI, N=NO");
+        opcion=teclado.next().toUpperCase().charAt(0);
+    }while(opcion=='S');
+
+
 
   }
 
