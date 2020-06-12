@@ -1,4 +1,4 @@
-package upeu;
+package upeu.edu.pe.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class EntradaTeclado {
     }
     BufferedReader leerT=new BufferedReader(new InputStreamReader(System.in));
 
-    public int leer(int dato, String mensaje){
+    public int leer(int dato, String mensaje){        
         System.out.println(mensaje);
         try {
             dato=Integer.parseInt(leerT.readLine());
