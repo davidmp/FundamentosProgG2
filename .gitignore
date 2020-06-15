@@ -1,3 +1,5 @@
 *.replit
 *.class
 *.o
+*.jar
+build
