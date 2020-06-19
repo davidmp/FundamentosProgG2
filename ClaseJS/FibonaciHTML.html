@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="ClaseFibonaci.js" ></script>
+
+    </head>
+    <body>
+        Holas
+        <canvas height="3000px"  width="4000px" id="mycanvas" ></canvas>
+        <script>
+            var obj=new ClaseFibonaciX();
+
+            var canvas=document.getElementById("mycanvas");
+            var ctx=canvas.getContext("2d");
+            var img=new Image();
+            img.src="conejo3.png";
+            img.onload=function(){
+                var cantidad=prompt("Ingrese la cantidad de meses:");
+                var resultado=0; var corx=0; var conry=0;
+                for(i=1;i<=cantidad;i++){
+                    resultado=obj.fibonaci(i);
+                    for(j=1;j<=resultado;j++){
+                        ctx.drawImage(img,corx,conry);
+                        corx=corx+100;
+                    }
+                    corx=0;
+                    conry=conry+100;
+                }
+            }
+
+        </script>
+    </body>
+</html>

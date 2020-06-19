@@ -34,6 +34,7 @@ public class EjerciciosSubprograma {
         if(n<0){ return -1; }
         if(n==0 || n==1){ return n; }
         else{
+            System.out.println("f(n-1):"+(n-1)+" f(n-2):"+(n-2));
             return fibonaciRec(n-1)+fibonaciRec(n-2);
         }
     }
