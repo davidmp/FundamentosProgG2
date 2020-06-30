@@ -97,14 +97,41 @@ public class MainGUI extends JFrame implements ActionListener{
         contai.repaint();
         }
 
+		public void reportarTabla(Container contai){
+			//headers for the table
+			String[] columns = new String[] {
+				"Id", "Name", "Hourly Rate", "Part Time"
+			};
+			 
+			//actual data for the table in a 2d array
+			Object[][] data = new Object[][] {
+				{1, "John", 40.0, false },
+				{2, "Rambo", 70.0, false },
+				{3, "Zorro", 60.0, true },
+				{4, "David", 60.0, true },
+			};
+			//create table with data
+			table = new JTable(data, columns);	
+			scrollPane = new JScrollPane(table);
+			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			scrollPane.invalidate();
+			scrollPane.validate();
+			scrollPane.repaint();
+			contai.add(BorderLayout.CENTER, scrollPane);
+			contai.invalidate();
+			contai.validate();
+			contai.repaint();			
+		}
 
         //@Override
         public void actionPerformed(ActionEvent e) {
             Container contai=this.getContentPane();
             contai.remove(scrollPane);
             if(e.getSource()==m11){
-                //panelTabla(contai);
+                reportarTabla(contai);
             }
+            
             if(e.getSource()==send){
             panelDibujoImagen(contai);
             }
