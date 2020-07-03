@@ -25,10 +25,18 @@ public class App
                     new MainGUI();         
                     break;  
                     case 2:{
-
-
+                        int[] vectorV;
+                        int[] vectorX=new int[3];
+                        vectorX[0]=5;
+                        vectorX[1]=6;
+                        vectorX[2]=8;
+                        System.out.println(" vectorX[2]="+vectorX[2]);
+                        int[] vectorY={5,6,8,6,7};
+                        for(int indice=0;indice<vectorY.length;indice++){
+                            System.out.println(" vectorY["+indice+"]="+vectorY[indice]);
+                        }
+                        System.out.println("Tamanho Vector:"+vectorY.length);
                     }break;
-
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");
