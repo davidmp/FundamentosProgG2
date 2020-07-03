@@ -17,13 +17,18 @@ public class App
             do{            
                 numAlgoritm=teclado.leer(0,
                 "Ingrese el numero de Algoritmo que desea probar: \n"+
-                "01=Entorno Grafico\n"+
-                "02=xxxx \n"+
-                "03=xxx");                
+                "1=Entorno Grafico\n"+
+                "2= Practica de Vectores \n"+
+                "3=xxx");                
                 switch(numAlgoritm){
                     case 1: 
                     new MainGUI();         
                     break;  
+                    case 2:{
+
+
+                    }break;
+
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");
