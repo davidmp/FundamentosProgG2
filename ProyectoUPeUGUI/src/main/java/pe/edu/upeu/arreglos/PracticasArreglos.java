@@ -18,4 +18,25 @@ public class PracticasArreglos {
         }else{ System.out.println(" vector["+indiceE+"]="+vector[indiceE]); }
     }
 
+    public void sumaElemMediaArit(){
+        int[] vector={15,11,1,8,15,3,9,20};
+        int sumaElementos=0; double mediaArtir=0;
+        for(int subIndice=0;subIndice<vector.length;subIndice++){
+            sumaElementos+=vector[subIndice];//sumaElementos=sumaElementos+vector[subIndice];
+        }
+        System.out.println("Suma de Elementos:"+sumaElementos);
+        mediaArtir=(double)(sumaElementos)/vector.length;
+        System.out.println("Media Artirmetica:"+mediaArtir);
+    }
+
+    public void sumaElemMediaAritD(int[] vector){        
+        int sumaElementos=0; double mediaArtir=0;
+        for(int subIndice=0;subIndice<vector.length;subIndice++){
+            sumaElementos+=vector[subIndice];//sumaElementos=sumaElementos+vector[subIndice];
+        }
+        System.out.println("Suma de Elementos:"+sumaElementos);
+        mediaArtir=(double)(sumaElementos)/vector.length;
+        System.out.println("Media Artirmetica:"+mediaArtir);
+    }    
+
 }

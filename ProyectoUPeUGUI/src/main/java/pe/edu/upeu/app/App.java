@@ -38,7 +38,9 @@ public class App {
                 "Ingrese el numero de Algoritmo que desea probar: \n"+
                 "1= Entorno Grafico\n"+
                 "2= Practica de Vectores \n"+
-                "3= Cuadrado de 100 primeros numeros positivos\n");    
+                "3= Cuadrado de 100 primeros numeros positivos\n"+
+                "5= Suma Elementos Vector y Media Artimetica\n"
+                );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
                 
@@ -47,11 +49,19 @@ public class App {
                         new MainGUI();         
                     break;  
                     case 2:{
-                        practicaVectoresBasicos();
+                        practicaVectoresBasicos();                                             
                     }break;
                     case 3:{
                         obj.imprimirVector(obj.cuadrado100PrimerosNum(), -1);
-                    }break;                    
+                    }break;
+                    case 4:
+                    System.out.printf("%n%d elevado a %d es igual a %.3f", 54, 5, 54.6);   
+                    break;
+                    case 5:
+                        obj.sumaElemMediaArit();
+                        int[] vector={15,11,1,8,15,3,9,20};
+                        obj.sumaElemMediaAritD(vector);
+                    break;                    
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");
