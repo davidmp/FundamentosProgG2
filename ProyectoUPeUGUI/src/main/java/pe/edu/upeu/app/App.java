@@ -39,11 +39,12 @@ public class App {
                 "1= Entorno Grafico\n"+
                 "2= Practica de Vectores \n"+
                 "3= Cuadrado de 100 primeros numeros positivos\n"+
-                "5= Suma Elementos Vector y Media Artimetica\n"
+                "5= Suma Elementos Vector y Media Artimetica\n"+
+                "6= Matriz Identidad\n"
                 );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
-                
+                int tamanho;
                 switch(numAlgoritm){
                     case 1: 
                         new MainGUI();         
@@ -58,10 +59,15 @@ public class App {
                     System.out.printf("%n%d elevado a %d es igual a %.3f", 54, 5, 54.6);   
                     break;
                     case 5:
-                        obj.sumaElemMediaArit();
-                        int[] vector={15,11,1,8,15,3,9,20};
+                        //obj.sumaElemMediaArit();
+                        tamanho=teclado.leer(0, "Ingrese el Tamanho del Vector:");
+                        int[] vector=obj.rellenarValoresVector(tamanho);
                         obj.sumaElemMediaAritD(vector);
-                    break;                    
+                    break; 
+                    case 6:
+                        tamanho=teclado.leer(0, "Ingrese el Tamanho de la Matriz:");
+                        obj.imprimirMatriz(obj.matrizIdentidad(4));
+                    break;                                       
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");

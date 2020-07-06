@@ -1,5 +1,7 @@
 package pe.edu.upeu.arreglos;
 
+import pe.edu.upeu.utils.LeerTeclado;
+
 public class PracticasArreglos {
     
     public int[] cuadrado100PrimerosNum(){
@@ -37,6 +39,41 @@ public class PracticasArreglos {
         System.out.println("Suma de Elementos:"+sumaElementos);
         mediaArtir=(double)(sumaElementos)/vector.length;
         System.out.println("Media Artirmetica:"+mediaArtir);
-    }    
+    }
+
+    public int[] rellenarValoresVector(int tamanhoV){
+        int[] vector=new int[tamanhoV];
+        LeerTeclado teclado=new LeerTeclado();
+        for(int subIndice=0;subIndice<vector.length;subIndice++){
+            vector[subIndice]=teclado.leer(0, 
+            "Ingrese el valor de vector en el subIndice "+subIndice+":");
+        }
+        return vector;
+    }
+
+    public int[][] matrizIdentidad(int tamanhoV){
+        int[][] matriz=new int[tamanhoV][tamanhoV];
+        for(int indiceF=0;indiceF<matriz.length;indiceF++){
+            for(int indiceC=0;indiceC<matriz.length;indiceC++){
+                if(indiceF==indiceC){
+                    matriz[indiceF][indiceC]=1;
+                }else{
+                    matriz[indiceF][indiceC]=0;
+                }
+            }
+        }
+        return matriz;
+    }
+
+    public void imprimirMatriz(int[][] matriz){
+        for(int indiceF=0;indiceF<matriz.length;indiceF++){
+            for(int indiceC=0;indiceC<matriz.length;indiceC++){
+                System.out.print(matriz[indiceF][indiceC]+"\t");
+            }
+            System.out.println("");
+        }        
+    }
+
+
 
 }
