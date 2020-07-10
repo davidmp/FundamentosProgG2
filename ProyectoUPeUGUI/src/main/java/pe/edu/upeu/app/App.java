@@ -1,6 +1,9 @@
 package pe.edu.upeu.app;
 
 import pe.edu.upeu.arreglos.PracticasArreglos;
+import pe.edu.upeu.dao.AppCrud;
+import pe.edu.upeu.modelo.Productos;
+import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
 
 /**
@@ -33,6 +36,9 @@ public class App {
             LeerTeclado teclado=new LeerTeclado();            
             char opcion='S'; //S=SI, N=NO
             int numAlgoritm=1;
+            LeerArchivo leerArc=new LeerArchivo("Productos.txt");
+            AppCrud doa=new AppCrud();
+            Productos proTO=new Productos();
             do{            
                 numAlgoritm=teclado.leer(0,
                 "Ingrese el numero de Algoritmo que desea probar: \n"+
@@ -67,7 +73,20 @@ public class App {
                     case 6:
                         tamanho=teclado.leer(0, "Ingrese el Tamanho de la Matriz:");
                         obj.imprimirMatriz(obj.matrizIdentidad(4));
-                    break;                                       
+                    break; 
+
+                    case 7:
+                        proTO=new Productos();
+                        proTO.setProductoId(teclado.leer("", "Ingrese el Codigo Producto:"));
+                        proTO.setNombre(teclado.leer("", "Ingrese el nombre producto:"));
+                        proTO.setPrecioUnit(teclado.leer(0.0, "Ingrese el Precio Unitario:"));
+                        doa=new AppCrud();
+                        doa.imprimirLista(doa.agregarContenido(leerArc, proTO));
+                    break;
+                    case 8:
+                    doa=new AppCrud();
+                    doa.imprimirLista(doa.listarContenido(leerArc));
+                    break;
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");
