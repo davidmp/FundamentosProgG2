@@ -17,6 +17,21 @@ public class App {
     static LeerArchivo leerArc;
     static AppCrud doa=new AppCrud();
 
+    public final static void clearConsole(){
+        try{            
+            final String os = System.getProperty("os.name");    
+            if (os.contains("Windows")){
+               new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            }
+            else{
+                new ProcessBuilder("bash", "-c", "clear").inheritIO().start().waitFor();
+            }
+        }
+        catch (final Exception e){
+           System.out.println("Error: "+e.getMessage());
+        }
+    }
+
 
     public static void practicaVectoresBasicos(){
         int[] vectorV;
@@ -116,11 +131,13 @@ public class App {
                     doa.imprimirLista(agregarProducto());
                     break;
                     case 8:
+                    clearConsole();
                     leerArc=new LeerArchivo("Productos.txt");
                     doa=new AppCrud();
                     doa.imprimirLista(doa.listarContenido(leerArc));
                     break;
                     case 9:
+                    clearConsole();
                     //leerArc=new LeerArchivo("Pedidos.txt");
                     doa=new AppCrud();
                     doa.imprimirLista(agregarPedido());
