@@ -12,6 +12,11 @@ import pe.edu.upeu.utils.LeerTeclado;
  */
 public class App {
 
+    static LeerTeclado teclado=new LeerTeclado();
+    static LeerArchivo leerArc;
+    static AppCrud doa=new AppCrud();
+
+
     public static void practicaVectoresBasicos(){
         int[] vectorV;
         vectorV=new int[1];
@@ -30,15 +35,25 @@ public class App {
         System.out.println("Tamanho Vector:"+vectorY.length);
     }
 
+    public static Object[][] agregarProducto(){
+        leerArc=new LeerArchivo("Productos.txt");     
+        Productos proTO=new Productos();
+        proTO=new Productos();
+        proTO.setProductoId(teclado.leer("", "Ingrese el Codigo Producto:"));
+        proTO.setNombre(teclado.leer("", "Ingrese el nombre producto:"));
+        proTO.setPrecioUnit(teclado.leer(0.0, "Ingrese el Precio Unitario:"));
+        doa=new AppCrud();        
+        return doa.agregarContenido(leerArc, proTO);
+    }
+
     public static void main( String[] args ){
         System.out.println( "Systema de Menu de opciones******" );    
         try {
-            LeerTeclado teclado=new LeerTeclado();            
+                    
             char opcion='S'; //S=SI, N=NO
             int numAlgoritm=1;
-            LeerArchivo leerArc=new LeerArchivo("Productos.txt");
-            AppCrud doa=new AppCrud();
-            Productos proTO=new Productos();
+                   
+            
             do{            
                 numAlgoritm=teclado.leer(0,
                 "Ingrese el numero de Algoritmo que desea probar: \n"+
@@ -46,7 +61,9 @@ public class App {
                 "2= Practica de Vectores \n"+
                 "3= Cuadrado de 100 primeros numeros positivos\n"+
                 "5= Suma Elementos Vector y Media Artimetica\n"+
-                "6= Matriz Identidad\n"
+                "6= Matriz Identidad\n"+
+                "7= Agregar Producto\n"+
+                "8= Listar Producto\n"
                 );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
@@ -74,16 +91,12 @@ public class App {
                         tamanho=teclado.leer(0, "Ingrese el Tamanho de la Matriz:");
                         obj.imprimirMatriz(obj.matrizIdentidad(4));
                     break; 
-
                     case 7:
-                        proTO=new Productos();
-                        proTO.setProductoId(teclado.leer("", "Ingrese el Codigo Producto:"));
-                        proTO.setNombre(teclado.leer("", "Ingrese el nombre producto:"));
-                        proTO.setPrecioUnit(teclado.leer(0.0, "Ingrese el Precio Unitario:"));
-                        doa=new AppCrud();
-                        doa.imprimirLista(doa.agregarContenido(leerArc, proTO));
+                    doa=new AppCrud();
+                    doa.imprimirLista(agregarProducto());
                     break;
                     case 8:
+                    leerArc=new LeerArchivo("Productos.txt");
                     doa=new AppCrud();
                     doa.imprimirLista(doa.listarContenido(leerArc));
                     break;
