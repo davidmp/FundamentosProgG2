@@ -2,6 +2,7 @@ package pe.edu.upeu.app;
 
 import pe.edu.upeu.arreglos.PracticasArreglos;
 import pe.edu.upeu.dao.AppCrud;
+import pe.edu.upeu.modelo.Pedidos;
 import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
@@ -46,14 +47,32 @@ public class App {
         return doa.agregarContenido(leerArc, proTO);
     }
 
+    public static Object[][] agregarPedido(){
+        
+        Pedidos pedTO=new Pedidos();    
+        LeerArchivo leerProd=new LeerArchivo("Productos.txt");
+        doa=new AppCrud();  
+        Object[][] listaProd=doa.listarContenido(leerProd);
+        for(int i=0;i<listaProd.length;i++){
+            System.out.print(listaProd[i][0]+"="+listaProd[i][1]+" ("+listaProd[i][2]+"), ");
+        }
+        System.out.println("");
+        pedTO.setProductoId(teclado.leer("", "Ingrese el Codigo del Producto:"));
+        pedTO.setDescripPedido(teclado.leer("", "Ingrese una breve descripcion:"));
+        pedTO.setCantidad(teclado.leer(0.0, "Ingrese la cantidad:"));
+        listaProd=doa.buscarContenido(leerProd, 0, pedTO.getProductoId());
+        pedTO.setPrecioUnit(Double.parseDouble(listaProd[0][2].toString()));
+        pedTO.setPrecioTotal(pedTO.getCantidad()*pedTO.getPrecioUnit());
+        doa=new AppCrud();
+        leerArc=new LeerArchivo("Pedidos.txt");    
+        return doa.agregarContenido(leerArc, pedTO);
+    }
+
     public static void main( String[] args ){
         System.out.println( "Systema de Menu de opciones******" );    
-        try {
-                    
+        try {                    
             char opcion='S'; //S=SI, N=NO
-            int numAlgoritm=1;
-                   
-            
+            int numAlgoritm=1;                               
             do{            
                 numAlgoritm=teclado.leer(0,
                 "Ingrese el numero de Algoritmo que desea probar: \n"+
@@ -63,7 +82,8 @@ public class App {
                 "5= Suma Elementos Vector y Media Artimetica\n"+
                 "6= Matriz Identidad\n"+
                 "7= Agregar Producto\n"+
-                "8= Listar Producto\n"
+                "8= Listar Producto\n"+
+                "9= Registrar Pedido\n"
                 );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
@@ -99,6 +119,11 @@ public class App {
                     leerArc=new LeerArchivo("Productos.txt");
                     doa=new AppCrud();
                     doa.imprimirLista(doa.listarContenido(leerArc));
+                    break;
+                    case 9:
+                    //leerArc=new LeerArchivo("Pedidos.txt");
+                    doa=new AppCrud();
+                    doa.imprimirLista(agregarPedido());
                     break;
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
