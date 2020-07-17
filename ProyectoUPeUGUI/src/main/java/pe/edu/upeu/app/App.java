@@ -7,6 +7,7 @@ import pe.edu.upeu.modelo.Pedidos;
 import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
+import pe.edu.upeu.utils.UtilsX;
 
 /**
  * Hello world!
@@ -17,21 +18,8 @@ public class App {
     static LeerTeclado teclado=new LeerTeclado();
     static LeerArchivo leerArc;
     static AppCrud doa=new AppCrud();
+    static UtilsX utilx=new UtilsX();
 
-    public final static void clearConsole(){
-        try{            
-            final String os = System.getProperty("os.name");    
-            if (os.contains("Windows")){
-               new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            }
-            else{
-                new ProcessBuilder("bash", "-c", "clear").inheritIO().start().waitFor();
-            }
-        }
-        catch (final Exception e){
-           System.out.println("Error: "+e.getMessage());
-        }
-    }
 
 
     public static void practicaVectoresBasicos(){
@@ -63,26 +51,6 @@ public class App {
         return doa.agregarContenido(leerArc, proTO);
     }
 
-    public static Object[][] agregarPedido(){
-        
-        Pedidos pedTO=new Pedidos();    
-        LeerArchivo leerProd=new LeerArchivo("Productos.txt");
-        doa=new AppCrud();  
-        Object[][] listaProd=doa.listarContenido(leerProd);
-        for(int i=0;i<listaProd.length;i++){
-            System.out.print(listaProd[i][0]+"="+listaProd[i][1]+" ("+listaProd[i][2]+"), ");
-        }
-        System.out.println("");
-        pedTO.setProductoId(teclado.leer("", "Ingrese el Codigo del Producto:"));
-        pedTO.setDescripPedido(teclado.leer("", "Ingrese una breve descripcion:"));
-        pedTO.setCantidad(teclado.leer(0.0, "Ingrese la cantidad:"));
-        listaProd=doa.buscarContenido(leerProd, 0, pedTO.getProductoId());
-        pedTO.setPrecioUnit(Double.parseDouble(listaProd[0][2].toString()));
-        pedTO.setPrecioTotal(pedTO.getCantidad()*pedTO.getPrecioUnit());
-        doa=new AppCrud();
-        leerArc=new LeerArchivo("Pedidos.txt");    
-        return doa.agregarContenido(leerArc, pedTO);
-    }
 
     public static void main( String[] args ){
         System.out.println( "Systema de Menu de opciones******" );    
@@ -132,13 +100,13 @@ public class App {
                     doa.imprimirLista(agregarProducto());
                     break;
                     case 8:
-                    clearConsole();
+                    utilx.clearConsole();
                     leerArc=new LeerArchivo("Productos.txt");
                     doa=new AppCrud();
                     doa.imprimirLista(doa.listarContenido(leerArc));
                     break;
                     case 9:
-                    clearConsole();
+                    utilx.clearConsole();
                     PedidosDao pedDao=new PedidosDao();
                     pedDao.registrarPedido();
                     pedDao.reportarPedidos();
