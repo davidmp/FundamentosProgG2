@@ -3,7 +3,6 @@ package pe.edu.upeu.app;
 import pe.edu.upeu.arreglos.PracticasArreglos;
 import pe.edu.upeu.dao.AppCrud;
 import pe.edu.upeu.dao.PedidosDao;
-import pe.edu.upeu.modelo.Pedidos;
 import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
