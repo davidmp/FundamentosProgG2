@@ -2,6 +2,7 @@ package pe.edu.upeu.app;
 
 import pe.edu.upeu.arreglos.PracticasArreglos;
 import pe.edu.upeu.dao.AppCrud;
+import pe.edu.upeu.dao.PedidosDao;
 import pe.edu.upeu.modelo.Pedidos;
 import pe.edu.upeu.modelo.Productos;
 import pe.edu.upeu.utils.LeerArchivo;
@@ -138,9 +139,9 @@ public class App {
                     break;
                     case 9:
                     clearConsole();
-                    //leerArc=new LeerArchivo("Pedidos.txt");
-                    doa=new AppCrud();
-                    doa.imprimirLista(agregarPedido());
+                    PedidosDao pedDao=new PedidosDao();
+                    pedDao.registrarPedido();
+                    pedDao.reportarPedidos();
                     break;
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
