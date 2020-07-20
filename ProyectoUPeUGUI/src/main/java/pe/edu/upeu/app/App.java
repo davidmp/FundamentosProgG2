@@ -39,20 +39,11 @@ public class App {
         System.out.println("Tamanho Vector:"+vectorY.length);
     }
 
-    public static Object[][] agregarProducto(){
-        leerArc=new LeerArchivo("Productos.txt");     
-        Productos proTO=new Productos();
-        proTO=new Productos();
-        proTO.setProductoId(teclado.leer("", "Ingrese el Codigo Producto:"));
-        proTO.setNombre(teclado.leer("", "Ingrese el nombre producto:"));
-        proTO.setPrecioUnit(teclado.leer(0.0, "Ingrese el Precio Unitario:"));
-        doa=new AppCrud();        
-        return doa.agregarContenido(leerArc, proTO);
-    }
 
 
     public static void main( String[] args ){
-        System.out.println( "Systema de Menu de opciones******" );    
+        System.out.println( "Systema de Menu de opciones******" ); 
+
         try {                    
             char opcion='S'; //S=SI, N=NO
             int numAlgoritm=1;                               
@@ -67,7 +58,8 @@ public class App {
                 "7= Agregar Producto\n"+
                 "8= Listar Producto\n"+
                 "9= Registrar Pedido\n"+
-                "10= Reportar Pedidos\n"
+                "10= Reportar Pedidos\n"+
+                "11= Reportar por Fecha\n"
                 );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
@@ -97,8 +89,8 @@ public class App {
                         obj.imprimirMatriz(obj.matrizIdentidad(4));
                     break; 
                     case 7:
-                    doa=new AppCrud();
-                    doa.imprimirLista(agregarProducto());
+                    pedDao=new PedidosDao();
+                    pedDao.imprimirLista(pedDao.agregarProducto());
                     break;
                     case 8:
                     utilx.clearConsole();
@@ -116,6 +108,11 @@ public class App {
                     pedDao=new PedidosDao();
                     pedDao.reportarPedidos();
                     break;
+                    case 11:
+                    utilx.clearConsole();
+                    pedDao=new PedidosDao();
+                    pedDao.reportePedidosdelDia(teclado.leer("", "Ingrese la fecha: (dd-MM-yyyy):"));
+                    break;                    
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");

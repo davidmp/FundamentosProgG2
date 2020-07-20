@@ -96,5 +96,30 @@ public class PedidosDao extends AppCrud{
         imprimirLista(listarContenido(leerArc)); 
     }
 
+    public void reportePedidosdelDia(String fecha){
+        leerArc=new LeerArchivo("Pedidos.txt");
+        System.out.println("***************Reporte-Pedidos del Dia*********");        
+        Object [][] data=listarContenido(leerArc);
+        int cantidadFilasFI=0;
+        for(int fila=0;fila<data.length;fila++){
+            String[] vectorFecha=data[fila][1].toString().split(" ");
+            if(vectorFecha[0].equals(fecha)){
+                cantidadFilasFI++;
+            }
+        }
+        Object [][] dataDia=new Object[cantidadFilasFI][data[0].length];
+        int filaX=0, columnaX=0;
+        for(int fila=0;fila<data.length;fila++){
+            String[] vectorFecha=data[fila][1].toString().split(" ");
+            if(vectorFecha[0].equals(fecha)){
+            for(int columna=0;columna<data[0].length;columna++){
+                dataDia[filaX][columnaX]=data[fila][columna];
+                columnaX++;
+                }
+            }
+            filaX++; columnaX=0;
+        }
+        imprimirLista(dataDia);        
+    }
     
 }
