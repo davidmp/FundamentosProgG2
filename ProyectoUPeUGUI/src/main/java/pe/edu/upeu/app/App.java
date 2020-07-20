@@ -66,11 +66,13 @@ public class App {
                 "6= Matriz Identidad\n"+
                 "7= Agregar Producto\n"+
                 "8= Listar Producto\n"+
-                "9= Registrar Pedido\n"
+                "9= Registrar Pedido\n"+
+                "10= Reportar Pedidos\n"
                 );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
                 int tamanho;
+                PedidosDao pedDao;
                 switch(numAlgoritm){
                     case 1: 
                         new MainGUI();         
@@ -106,8 +108,12 @@ public class App {
                     break;
                     case 9:
                     utilx.clearConsole();
-                    PedidosDao pedDao=new PedidosDao();
-                    pedDao.registrarPedido();
+                    pedDao=new PedidosDao();
+                    pedDao.registrarPedido();                    
+                    break;
+                    case 10:
+                    utilx.clearConsole();
+                    pedDao=new PedidosDao();
                     pedDao.reportarPedidos();
                     break;
                     default: System.out.println("La opcion No existe!!"); break;
