@@ -107,6 +107,7 @@ public class PedidosDao extends AppCrud{
                 cantidadFilasFI++;
             }
         }
+        System.out.println("Felias:"+cantidadFilasFI);
         Object [][] dataDia=new Object[cantidadFilasFI][data[0].length];
         int filaX=0, columnaX=0;
         for(int fila=0;fila<data.length;fila++){
@@ -116,8 +117,9 @@ public class PedidosDao extends AppCrud{
                 dataDia[filaX][columnaX]=data[fila][columna];
                 columnaX++;
                 }
-            }
-            filaX++; columnaX=0;
+            filaX++;
+            columnaX=0;
+            }             
         }
         imprimirLista(dataDia);        
     }
