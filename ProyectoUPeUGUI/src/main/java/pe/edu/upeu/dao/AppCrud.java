@@ -103,7 +103,7 @@ public class AppCrud {
             for(Field field : fields) {
                 String fieldName = field.getName();
                 Object fieldValue = field.get(modelo);                
-                if(!fieldValue.equals(null) && !fieldValue.equals("") && numIdColumModelo!=primero && !fieldValue.equals(0) && !fieldValue.equals(0.0)){
+                if(fieldValue!=null && !fieldValue.equals("") && numIdColumModelo!=primero && !fieldValue.equals(0) && !fieldValue.equals(0.0)){
                     datosAnt[numFilasX][primero]=fieldValue;
                 }                
                 System.out.println(fieldName + ":"+ fieldValue);

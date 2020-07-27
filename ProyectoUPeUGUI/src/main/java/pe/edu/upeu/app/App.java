@@ -60,7 +60,8 @@ public class App {
                 "9= Registrar Pedido\n"+
                 "10= Reportar Pedidos\n"+
                 "11= Reportar por Fecha\n"+
-                "12= Reportar Rango Fechas\n"
+                "12= Reportar Rango Fechas\n"+
+                "13= Modificar Producto\n"
                 );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
@@ -122,7 +123,11 @@ public class App {
                         teclado.leer("", "Ingrese Fecha Fin: (dd-MM-yyyy):")
                         );
                     break;
-
+                    case 13:
+                    utilx.clearConsole();
+                    pedDao=new PedidosDao();
+                    pedDao.imprimirLista(pedDao.modificarRegProducto());
+                    break;
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");

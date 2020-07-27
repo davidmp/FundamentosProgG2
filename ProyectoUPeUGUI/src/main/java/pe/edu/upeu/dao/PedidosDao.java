@@ -176,4 +176,17 @@ public class PedidosDao extends AppCrud{
                
     }
 
+    public Object[][] modificarRegProducto(){
+        leerArc=new LeerArchivo("Productos.txt");
+        imprimirLista(listarContenido(leerArc));
+        System.out.println("--------------------------Modificar Producto------------------");
+        String dato=teclado.leer("", "Ingrese el Id del Producto:");
+        Productos modelo=new Productos();
+        modelo.setNombre(teclado.leer("", "Ingrese el nuevo nombre del Producto:"));
+        modelo.setPrecioUnit(teclado.leer(0.0, "Ingrese el nuevo Precio del Producto:"));        
+        Object[][] data=editarRegistro(leerArc, 0, dato, modelo);
+        util.clearConsole();
+        return data;
+    }
+
 }
