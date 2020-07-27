@@ -16,6 +16,7 @@ public class PedidosDao extends AppCrud{
     Pedidos pedTO;
     LeerTeclado teclado=new LeerTeclado();
     SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    SimpleDateFormat formateadorOpc2 = new SimpleDateFormat("dd-MM-yyyy");
 
     public String generadorId(LeerArchivo leerArcX, int numColum, String prefijo){
         int idX=1;
@@ -124,4 +125,45 @@ public class PedidosDao extends AppCrud{
         imprimirLista(dataDia);        
     }
     
+    public void reportePedidosRangoFecha(String fechaInit, String fechaFin){
+        leerArc=new LeerArchivo("Pedidos.txt");
+        System.out.println("***************Reporte-Pedidos del Dia*********");        
+        Object [][] data=listarContenido(leerArc);
+        int cantidadFilasFI=0;
+        try {            
+        for(int fila=0;fila<data.length;fila++){
+            String[] vectorFecha=data[fila][1].toString().split(" ");
+            Date fechaTemp=formateadorOpc2.parse(vectorFecha[0].toString());
+            if((fechaTemp.after(formateadorOpc2.parse(fechaInit)) && 
+            fechaTemp.before(formateadorOpc2.parse(fechaFin))) || 
+            vectorFecha[0].equals(fechaInit) || 
+            vectorFecha[0].equals(fechaFin) ){
+                cantidadFilasFI++;
+            }
+        }
+        System.out.println("Felias:"+cantidadFilasFI);
+        Object [][] dataDia=new Object[cantidadFilasFI][data[0].length];
+        int filaX=0, columnaX=0;
+        for(int fila=0;fila<data.length;fila++){
+            String[] vectorFecha=data[fila][1].toString().split(" ");
+            Date fechaTemp=formateadorOpc2.parse(vectorFecha[0].toString());
+            if((fechaTemp.after(formateadorOpc2.parse(fechaInit)) && 
+            fechaTemp.before(formateadorOpc2.parse(fechaFin))) || 
+            vectorFecha[0].equals(fechaInit) || 
+            vectorFecha[0].equals(fechaFin)){
+            for(int columna=0;columna<data[0].length;columna++){
+                dataDia[filaX][columnaX]=data[fila][columna];
+                columnaX++;
+                }
+            filaX++;
+            columnaX=0;
+            }             
+        }
+        imprimirLista(dataDia); 
+        } catch (Exception e) {
+            System.out.println("Error:"+e.getMessage());
+        }
+               
+    }
+
 }
