@@ -59,7 +59,8 @@ public class App {
                 "8= Listar Producto\n"+
                 "9= Registrar Pedido\n"+
                 "10= Reportar Pedidos\n"+
-                "11= Reportar por Fecha\n"
+                "11= Reportar por Fecha\n"+
+                "12= Reportar Rango Fechas\n"
                 );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
@@ -112,7 +113,16 @@ public class App {
                     utilx.clearConsole();
                     pedDao=new PedidosDao();
                     pedDao.reportePedidosdelDia(teclado.leer("", "Ingrese la fecha: (dd-MM-yyyy):"));
-                    break;                    
+                    break; 
+                    case 12:
+                    utilx.clearConsole();
+                    pedDao=new PedidosDao();
+                    pedDao.reportePedidosRangoFecha(
+                        teclado.leer("", "Ingrese Fecha Inicio: (dd-MM-yyyy):"),
+                        teclado.leer("", "Ingrese Fecha Fin: (dd-MM-yyyy):")
+                        );
+                    break;
+
                     default: System.out.println("La opcion No existe!!"); break;
                 }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");

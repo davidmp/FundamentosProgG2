@@ -130,6 +130,7 @@ public class PedidosDao extends AppCrud{
         System.out.println("***************Reporte-Pedidos del Dia*********");        
         Object [][] data=listarContenido(leerArc);
         int cantidadFilasFI=0;
+        double cantidadPedidos=0, cantidadPlatos=0, montoRecaudado=0;
         try {            
         for(int fila=0;fila<data.length;fila++){
             String[] vectorFecha=data[fila][1].toString().split(" ");
@@ -153,13 +154,22 @@ public class PedidosDao extends AppCrud{
             vectorFecha[0].equals(fechaFin)){
             for(int columna=0;columna<data[0].length;columna++){
                 dataDia[filaX][columnaX]=data[fila][columna];
+                if(columna==4){cantidadPlatos+=Double.parseDouble(data[fila][columna].toString());}
+                if(columna==6){montoRecaudado+=Double.parseDouble(data[fila][columna].toString());}
                 columnaX++;
                 }
             filaX++;
             columnaX=0;
+            cantidadPedidos++;
             }             
         }
         imprimirLista(dataDia); 
+        System.out.println("-----------------------------Resumen de operaciones-----------------------");
+        System.out.println("Cantidad Pedidos:"+cantidadPedidos+"********Cantidad Platos:"+cantidadPlatos+"********Monto Recaudado:"+montoRecaudado);
+        System.out.println("---------------------------------------------------------------------");
+
+
+
         } catch (Exception e) {
             System.out.println("Error:"+e.getMessage());
         }
