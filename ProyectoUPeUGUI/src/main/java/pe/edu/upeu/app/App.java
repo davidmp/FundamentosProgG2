@@ -3,11 +3,11 @@ package pe.edu.upeu.app;
 import pe.edu.upeu.arreglos.PracticasArreglos;
 import pe.edu.upeu.dao.AppCrud;
 import pe.edu.upeu.dao.PedidosDao;
-import pe.edu.upeu.modelo.Productos;
+
 import pe.edu.upeu.utils.LeerArchivo;
 import pe.edu.upeu.utils.LeerTeclado;
 import pe.edu.upeu.utils.UtilsX;
-
+import java.io.Console;
 /**
  * Hello world!
  *
@@ -42,27 +42,38 @@ public class App {
 
 
     public static void main( String[] args ){
-        System.out.println( "Systema de Menu de opciones******" ); 
+        System.out.println( "----------Systema de Menu de opciones---------" ); 
+        System.out.println( "*******Formulario de Ingreso a Sistema*******" );         
+        Console con = System.console();    
+
 
         try {                    
             char opcion='S'; //S=SI, N=NO
-            int numAlgoritm=1;                               
-            do{            
-                numAlgoritm=teclado.leer(0,
-                "Ingrese el numero de Algoritmo que desea probar: \n"+
-                "1= Entorno Grafico\n"+
-                "2= Practica de Vectores \n"+
-                "3= Cuadrado de 100 primeros numeros positivos\n"+
-                "5= Suma Elementos Vector y Media Artimetica\n"+
-                "6= Matriz Identidad\n"+
-                "7= Agregar Producto\n"+
-                "8= Listar Producto\n"+
-                "9= Registrar Pedido\n"+
-                "10= Reportar Pedidos\n"+
-                "11= Reportar por Fecha\n"+
-                "12= Reportar Rango Fechas\n"+
-                "13= Modificar Producto\n"
-                );    
+            int numAlgoritm=1;  
+
+            String usuario=teclado.leer("", "Ingrese Usuario:");      
+            System.out.println("Ingrese su clave: ");   
+            char[] password=con.readPassword();   
+            if(usuario.equals("davidmp") &&  String.valueOf(password).equals("123456")){  
+
+            do{
+                              
+                
+                    numAlgoritm=teclado.leer(0,
+                    "Ingrese el numero de Algoritmo que desea probar: \n"+
+                    "1= Entorno Grafico\n"+
+                    "2= Practica de Vectores \n"+
+                    "3= Cuadrado de 100 primeros numeros positivos\n"+
+                    "5= Suma Elementos Vector y Media Artimetica\n"+
+                    "6= Matriz Identidad\n"+
+                    "7= Agregar Producto\n"+
+                    "8= Listar Producto\n"+
+                    "9= Registrar Pedido\n"+
+                    "10= Reportar Pedidos\n"+
+                    "11= Reportar por Fecha\n"+
+                    "12= Reportar Rango Fechas\n"+
+                    "13= Modificar Producto\n"
+                    );    
                 
                 PracticasArreglos obj=new PracticasArreglos();
                 int tamanho;
@@ -129,13 +140,15 @@ public class App {
                     pedDao.imprimirLista(pedDao.modificarRegProducto());
                     break;
                     default: System.out.println("La opcion No existe!!"); break;
-                }            
+                    }            
                 opcion=teclado.leer(' ', "Desea Probar mas Algoritmos? S=SI, N=NO");
-            }while(opcion=='S' || opcion=='s');   
+                
+            }while(opcion=='S' || opcion=='s'); 
+            }else{ System.out.println("Error al ingresar Usuario o Clave... Intente Nuevamente."); }  
         } catch (Exception er) {
             System.out.println(er.getMessage());
         }
-
+     
     }
 
 }
